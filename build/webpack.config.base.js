@@ -7,7 +7,6 @@ module.exports = {
 		path: path.resolve(__dirname, '../dist'),
 		publicPath: '/dist/'
 	},
-	mode: 'development',
 	module: {
 		noParse: /es6-promise\.js$/, // avoid webpack shimming process
 		rules: [

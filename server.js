@@ -1,5 +1,7 @@
 const path = require('path');
-const express = require('express')
+const express = require('express');
+// const LRU = require('lru-cache');
+const microcache = require('route-cache');
 const { createBundleRenderer } = require('vue-server-renderer');
 
 const app = express();
@@ -13,6 +15,10 @@ if(isProd) {
 	const clientManifest = require('./dist/vue-ssr-client-manifest.json')
 
 	renderer = createBundleRenderer(serverBundle, {
+		// cache: LRU({
+		// 	max: 1000,
+		// 	maxAge: 1000 * 60 * 15
+		// }),
 		template,
 		clientManifest
 	});
@@ -31,6 +37,8 @@ app.use('/favicon.ico', serve('./public'));
 app.use('/dist', serve('./dist', true));
 app.use('/public', serve('./public', true));
 app.use('/manifest.json', serve('./manifest.json', true));
+
+app.use(microcache.cacheSeconds(10, req => true && req.originalUrl));
 
 function render (req, res) {
 	const s = Date.now();

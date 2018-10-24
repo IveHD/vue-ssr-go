@@ -1,5 +1,5 @@
 <template>
-	<div>HomeHomeHomeHomeHomeHome</div>
+	<div>HomeHomeHomeHomeHomeHomeHomeHomeHomeHomeHomeHome</div>
 </template>
 
 <style lang="stylus">

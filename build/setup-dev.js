@@ -25,8 +25,18 @@ module.exports = function setupDev (app, templatePath, cb) {
 		}
 	};
 
+	if(typeof clientConfig.entry === 'string') {
+		clientConfig.entry = ['webpack-hot-middleware/client', clientConfig.entry];
+	}else {
+		Object.keys(clientConfig.entry).forEach(function(p){
+			if(clientConfig.entry[p] instanceof Array) {
+				clientConfig.entry[p].push('webpack-hot-middleware/client');
+			}else {
+				clientConfig.entry[p] = ['webpack-hot-middleware/client', clientConfig.entry[p]];
+			}
+		});
+	}
 	const devClientConfig = merge(clientConfig, {
-		entry: ['webpack-hot-middleware/client', clientConfig.entry],
 		plugins: [
 			new webpack.HotModuleReplacementPlugin(),
 			new webpack.NoEmitOnErrorsPlugin()

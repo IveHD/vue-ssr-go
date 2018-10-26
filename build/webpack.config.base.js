@@ -1,17 +1,23 @@
 const webpack = require('webpack');
 const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
-	entry: {
-		vendor: ['vue', 'element-ui']
-	},
+	// entry: {
+	// 	vendor: ['vue', 'element-ui']
+	// },
 	mode: 'development',
 	output: {
 		filename: '[name].[hash].js',
 		path: path.resolve(__dirname, '../dist'),
 		publicPath: '/dist/'
+	},
+	resolve: {
+		extensions: ['.js', '.vue', '.json'],
+		alias: {
+			'@component': path.resolve(__dirname, '../src/component')
+		}
 	},
 	module: {
 		noParse: /es6-promise\.js$/, // avoid webpack shimming process
@@ -54,6 +60,6 @@ module.exports = {
 		// 	context: __dirname,
 		// 	manifest: require('../dist/vendor-manifest.json'),
 		// }),
-		new BundleAnalyzerPlugin()
+		// new BundleAnalyzerPlugin()
 	]
 };

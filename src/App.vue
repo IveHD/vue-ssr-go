@@ -15,7 +15,6 @@
 		},
 		computed: {
 			isShow() {
-				console.log('asd');
 				return false;
 			}
 		}

@@ -16,11 +16,12 @@ module.exports = {
 	resolve: {
 		extensions: ['.js', '.vue', '.json'],
 		alias: {
+			'@webApi': path.resolve(__dirname, '../src/webApi'),
 			'@component': path.resolve(__dirname, '../src/component')
 		}
 	},
 	module: {
-		noParse: /es6-promise\.js$/, // avoid webpack shimming process
+		// noParse: /es6-promise\.js$/, // avoid webpack shimming process
 		rules: [
 			{
 				test: /\.vue$/,

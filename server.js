@@ -70,9 +70,17 @@ function render (req, res) {
 	});
 }
 
-app.get('*', isProd ? render : (res, req) => {
-	readyPromise.then(() => render(res, req));
+app.get('/', isProd ? render : (req, res) => {
+	readyPromise.then(() => render(req, res));
 });
+
+app.get('/view/*', isProd ? render : (req, res) => {
+	readyPromise.then(() => render(req, res));
+});
+
+if(!isProd) {
+	require('./mock/index.js')(app);
+}
 
 app.listen(4000, () => {
 	console.log('listening 127.0.0.1:4000');

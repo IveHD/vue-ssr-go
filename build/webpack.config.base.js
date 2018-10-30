@@ -7,7 +7,7 @@ module.exports = {
 	// entry: {
 	// 	vendor: ['vue', 'element-ui']
 	// },
-	mode: 'development',
+	mode: 'production',
 	output: {
 		filename: '[name].[hash].js',
 		path: path.resolve(__dirname, '../dist'),
@@ -47,11 +47,16 @@ module.exports = {
 			}, {
 				test: /\.css$/,
 				use: ['vue-style-loader', 'css-loader']
+			}, {
+				type: 'javascript/auto',  //fix node-fetch "non ECMA module error"
+				test: /\.mjs$/,
+				use: []
 			}
 		]
 	},
 	plugins: [
 		new VueLoaderPlugin(),
+		new webpack.IgnorePlugin(/^encoding$/, /node-fetch/)  //fix node-fetch https://github.com/bitinn/node-fetch/issues/412
 		// new webpack.DllPlugin({
 		// 	name: '[name]_[hash]',
 		// 	path: path.join(__dirname, '../dist', '[name]-manifest.json'),

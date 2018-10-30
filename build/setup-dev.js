@@ -8,6 +8,8 @@ const merge = require('webpack-merge');
 const clientConfig = require('./webpack.config.client');
 const serverConfig = require('./webpack.config.server');
 
+clientConfig.mode = 'development';
+
 module.exports = function setupDev (app, templatePath, cb) {
 	let bundle;
 	let template = fs.readFileSync(templatePath, 'utf-8');

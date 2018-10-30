@@ -16,6 +16,7 @@
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "babel-plugin-component": "^1.1.1",
     "element-ui": "^2.4.8",
     "express": "^4.16.4",
     "lru-cache": "^4.1.3",

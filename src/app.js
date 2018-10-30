@@ -1,10 +1,10 @@
 import Vue from 'vue';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+// import Element from 'element-ui';
+// import 'element-ui/lib/theme-chalk/index.css';
 import App from './App.vue';
 import { createRouter } from './router';
 
-Vue.use(ElementUI);
+// Vue.use(Element);
 
 export function createApp () {
 	const router = createRouter();

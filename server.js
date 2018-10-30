@@ -57,7 +57,7 @@ function render (req, res) {
 	};
 
 	const context = {
-		title: 'Vue RSS',
+		title: 'Vue SSR',
 		url: req.url
 	}
 
